@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    
+
+</head>
+            <body>
+                <table>
+                     <h3>Upload CSV</h3>
+                     <form method="POST" action="/" enctype="multipart/form-data">
+                         <input type="file" name="data_file" accept=".csv">
+                         <input type="submit" value="Upload">
+                    </form>
+                    <br>
+                    <form method="POST" action="/view">
+                         <h3>Start Date</h3>
+                         <input type="date" name="startdate">
+                         <br>
+                         <h3>End Date</h3>
+                         <input type="date" name="enddate">
+                         <br>
+                         <input type="submit" value="Fetch Data and Generate Report">
+
+                    </form>
+                </table>
+
+                {% block body %} 
+<hr>
+<h3 align="center">All Products List</h3>
+<hr>
+<table border="1" class="table table-bordered table-striped">
+     <tr>
+          <th>Image Name</th>
+          <th>Detection</th>
+          <th>Image</th>
+          
+          
+     </tr>
+     {% for name in names %}
+     <tr>
+          <td>{{name[0]}} </td>
+          
+          <td>{{name[1]}}</td>
+          
+          <td>{{name[2]}}</td>
+          
+     </tr>
+     {% endfor %}
+</table>
+
+
+
+     {% endblock %}
+            </body>
+        </html>
